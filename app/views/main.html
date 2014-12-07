@@ -1,7 +1,18 @@
 <div ng-controller="LuggageConveyor">
-  <span ng-repeat="luggage in luggages" luggage type="{{luggage.type}}">
+  <span ng-repeat="luggage in luggages" luggage type="{{luggage.type}}" ng-click="openLuggage($index)">
   </span>
 </div>
+
+<div ng-controller="HoardController">
+  <ul>
+    <li dir-paginate="item in hoard | filter:filterOwnedItems | itemsPerPage: 10">
+      {{item.name}} : {{item.count}}
+    </li>
+  </ul>
+  Only Items I Own: <input type="checkbox" ng-model="onlyOwnedItems">
+</div>
+
+<dir-pagination-controls template-url="views/pagination/dirPagination.tpl.html"></dir-pagination-controls>
 
 
 <div class="attribution">
