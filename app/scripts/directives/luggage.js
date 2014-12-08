@@ -8,7 +8,7 @@
  * Controller for luggage conveyor belt
  */
 angular.module('unclaimedBaggageApp')
-  .directive('luggage', ['$sce', 'luggageTypes', function ($sce, luggageTypes) {
+  .directive('ubLuggage', ['$sce', 'luggageTypes', function ($sce, luggageTypes) {
     return {
       template: '<i class="flaticon-{{name}}"></i>',
       link: function(scope, elem, attr) {

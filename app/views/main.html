@@ -1,12 +1,13 @@
 <div ng-controller="LuggageConveyor">
-  <span ng-repeat="luggage in luggages" luggage type="{{luggage.type}}" ng-click="openLuggage($index)">
+  <span ng-repeat="luggage in luggages" ub-luggage type="{{luggage.type}}" ng-click="openLuggage($index)">
   </span>
 </div>
 
 <div ng-controller="HoardController">
-  <ul>
-    <li dir-paginate="item in hoard | filter:filterOwnedItems | itemsPerPage: 10">
-      {{item.name}} : {{item.count}}
+  <ul class="hoard-list">
+    <li ng-class="{'is-owned': item.owned}" dir-paginate="item in hoard | filter:filterOwnedItems | itemsPerPage: 25">
+      <span ub-item type="{{item.id}}"></span>
+      <span class="item-count">{{item.count}}</span>
     </li>
   </ul>
   Only Items I Own: <input type="checkbox" ng-model="onlyOwnedItems">

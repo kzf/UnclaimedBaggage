@@ -9,22 +9,28 @@
  */
 angular.module('unclaimedBaggageApp')
   .controller('LuggageConveyor', 
-    ['$scope', '$interval', 'hoard', 'luggageTypes', 
-    function ($scope, $interval, hoard, luggageTypes) {
+    ['$scope', '$interval', 'hoard', 'items', 'luggageTypes', 
+    function ($scope, $interval, hoard, items, luggageTypes) {
 
       $scope.luggages = [];
       var interval = $interval(function() {
         if ($scope.luggages.length < 4) {
+          var contents = [];
+          for (var i = 0; i < 7; i++) {
+            contents.push(Math.floor(Math.random() * items.length));
+          }
           $scope.luggages.push({
             type: Math.floor(Math.random() * luggageTypes.length),
-            contents: Math.floor(Math.random() * 200)
+            contents: contents
           });
         }
       }, 1000);
 
       $scope.openLuggage = function(i) {
         var luggage = $scope.luggages[i];
-        hoard.addItem(luggage.contents);
+        luggage.contents.forEach(function(i) {
+          hoard.addItem(i);
+        });
         $scope.luggages.splice(i, 1);
       }
 

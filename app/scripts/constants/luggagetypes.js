@@ -78,10 +78,6 @@ angular.module('unclaimedBaggageApp')
         colors: COLORS.muted
       },
       {
-        name: 'stroller1',
-        colors: COLORS.colorful
-      },
-      {
         name: 'suitcase1',
         colors: COLORS.muted
       },

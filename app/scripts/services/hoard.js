@@ -9,22 +9,25 @@
  */
 angular.module('unclaimedBaggageApp')
   .service('hoard', 
-    [
-    function () {
+    ['items',
+    function (items) {
 
       var hoard = [];
 
-      for (var i = 0; i < 200; i++) {
+      items.forEach(function(i, index) {
         hoard.push({
-          name: 'sock' + i,
-          count: 0
-        });
-      }
+          name: i.name,
+          id: index,
+          count: 0,
+          owned: false
+        })
+      })
 
       this.hoard = hoard;
 
       this.addItem = function(i) {
         hoard[i].count++;
+        hoard[i].owned = true;
       }
 
   }]);
