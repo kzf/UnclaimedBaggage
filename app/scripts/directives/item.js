@@ -19,9 +19,8 @@ angular.module('unclaimedBaggageApp')
           var item = items[i];
           scope.id = item.id;
           elem.css('color', item.color);
+          console.log(item);
         });
-
-        
 
       }
     };
